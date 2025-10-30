@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>'和我玩吗？'</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      background: #fff9f3;
+      overflow: hidden;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 18px;
+      padding: 12px 24px;
+      margin: 10px;
+      transition: all 0.2s ease;
+      color: #fff;
+    }
+    #yesBtn { background-color: #4CAF50; }
+    #noBtn { background-color: #f44336; position: relative; }
+  </style>
+</head>
+<body>
+  <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276aOe5aSp5bCP5aWz5bCP6K2meuWktOWDj18xNzMzODg1NTc2LjUyNDIwODU%3D%27/0.png">
+  <h1>和我玩吗？</h1>
+  <div>
+    <button id="yesBtn" class="btn">和你玩</button>
+    <button id="noBtn" class="btn">不和你玩</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    let scale = 1;
+    const grow = setInterval(() => {
+      scale += 0.02;
+      yesBtn.style.transform = `scale(${scale})`;
+      if (scale >= 2.5) clearInterval(grow);
+    }, 200);
+
+    yesBtn.addEventListener('click', () => {
+      clearInterval(grow);
+      // 点击“能”后跳转到 GIF（这里填上你的网络 GIF 地址）
+      window.location.href = 'https://img0.baidu.com/it/u=639499894,2902203921&fm=253&app=138&f=JPEG?w=646&h=452';
+    });
+
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+  </script>
+</body>
+</html>
