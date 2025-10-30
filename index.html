@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>'和我玩吗？'</title>
+  <title>和我玩吗？</title>
   <style>
     body {
       margin: 0;
@@ -41,6 +41,7 @@
   </style>
 </head>
 <body>
+  <!-- 你可以换成自己的网络图片 -->
   <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276aOe5aSp5bCP5aWz5bCP6K2meuWktOWDj18xNzMzODg1NTc2LjUyNDIwODU%3D%27/0.png">
   <h1>和我玩吗？</h1>
   <div>
@@ -52,6 +53,7 @@
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
 
+    // “和你玩”按钮自动变大
     let scale = 1;
     const grow = setInterval(() => {
       scale += 0.02;
@@ -59,19 +61,26 @@
       if (scale >= 2.5) clearInterval(grow);
     }, 200);
 
+    // 点击“和你玩”后跳转到 GIF（换成你自己的链接）
     yesBtn.addEventListener('click', () => {
       clearInterval(grow);
-      // 点击“能”后跳转到 GIF（这里填上你的网络 GIF 地址）
       window.location.href = 'https://img0.baidu.com/it/u=639499894,2902203921&fm=253&app=138&f=JPEG?w=646&h=452';
     });
 
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    // “不和你玩”按钮会一直乱跑
+    function moveButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const x = Math.random() * maxX * 0.9;
+      const y = Math.random() * maxY * 0.9;
       noBtn.style.position = 'absolute';
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
-    });
+    }
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('click', moveButton);
   </script>
 </body>
 </html>
+
